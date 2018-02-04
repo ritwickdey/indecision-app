@@ -2,13 +2,14 @@ class IndecisionApp extends React.Component {
   render() {
     const app = {
       title: "Indecision App",
-      subTitle: "Your Computer's Choice"
+      subTitle: "Your Computer's Choice",
+      options: ["one", "two", "three"]
     };
     return (
       <div>
         <Header title={app.title} subTitle={app.subTitle} />
         <Action />
-        <Options />
+        <Options options={app.options} />
         <AddOption />
       </div>
     );
@@ -38,23 +39,24 @@ class Action extends React.Component {
 
 class Options extends React.Component {
   render() {
+    const optionValues = this.props.options || [];
     return (
       <div>
-        <p>Here are your options</p>
-        <Option />
+        {optionValues.length == 0 && <p>No options</p>}
+        {optionValues.length != 0 && (
+          <div>
+            <p>Here are your options</p>
+            <ol>{optionValues.map((e, i) => <Option value={e} key={i} />)}</ol>
+          </div>
+        )}
       </div>
     );
   }
 }
 class Option extends React.Component {
   render() {
-    return (
-      <ol>
-        <li>Hello</li>
-        <li>Hi</li>
-        <li>Hey</li>
-      </ol>
-    );
+    const { key, value } = this.props;
+    return <li key={key}> {value} </li>;
   }
 }
 
