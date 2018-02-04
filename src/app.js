@@ -1,8 +1,12 @@
 class IndecisionApp extends React.Component {
   render() {
+    const app = {
+      title: "Indecision App",
+      subTitle: "Your Computer's Choice"
+    };
     return (
       <div>
-        <Header />
+        <Header title={app.title} subTitle={app.subTitle} />
         <Action />
         <Options />
         <AddOption />
@@ -15,8 +19,8 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <h1>Indecision App</h1>
-        <p>Your Computer's Choice</p>
+        <h1>{this.props.title}</h1>
+        <p>{this.props.subTitle}</p>
       </div>
     );
   }
@@ -54,7 +58,5 @@ class AddOption extends React.Component {
     );
   }
 }
-
-
 
 ReactDOM.render(<IndecisionApp />, document.getElementById("app"));

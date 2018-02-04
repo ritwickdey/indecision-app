@@ -20,10 +20,14 @@ var IndecisionApp = function (_React$Component) {
   _createClass(IndecisionApp, [{
     key: "render",
     value: function render() {
+      var app = {
+        title: "Indecision App",
+        subTitle: "Your Computer's Choice"
+      };
       return React.createElement(
         "div",
         null,
-        React.createElement(Header, null),
+        React.createElement(Header, { title: app.title, subTitle: app.subTitle }),
         React.createElement(Action, null),
         React.createElement(Options, null),
         React.createElement(AddOption, null)
@@ -52,12 +56,12 @@ var Header = function (_React$Component2) {
         React.createElement(
           "h1",
           null,
-          "Indecision App"
+          this.props.title
         ),
         React.createElement(
           "p",
           null,
-          "Your Computer's Choice"
+          this.props.subTitle
         )
       );
     }
