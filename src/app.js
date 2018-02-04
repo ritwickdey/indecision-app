@@ -55,8 +55,8 @@ class Options extends React.Component {
 }
 class Option extends React.Component {
   render() {
-    const { key, value } = this.props;
-    return <li key={key}> {value} </li>;
+    const { value } = this.props;
+    return <li> {value} </li>;
   }
 }
 
