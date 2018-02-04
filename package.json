@@ -1,0 +1,14 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src/**/*.js --out-dir=public/scripts/ --presets=env,react",
+    "build:watch": "npm run build -- --watch"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
