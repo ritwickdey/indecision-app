@@ -1,15 +1,34 @@
 class IndecisionApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: ["one", "two", "three"]
+    };
+
+    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+  }
+
+  handleDeleteOptions() {
+    this.setState(() => {
+      return {
+        options: []
+      };
+    });
+  }
+
   render() {
     const app = {
       title: "Indecision App",
-      subTitle: "Your Computer's Choice",
-      options: ["one", "two", "three"]
+      subTitle: "Your Computer's Choice"
     };
     return (
       <div>
         <Header title={app.title} subTitle={app.subTitle} />
         <Action />
-        <Options options={app.options} />
+        <Options
+          options={this.state.options}
+          handleDeleteOptions={this.handleDeleteOptions}
+        />
         <AddOption />
       </div>
     );
@@ -44,16 +63,6 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleRemoveAll = this.handleRemoveAll.bind(this);
-  }
-
-  handleRemoveAll() {
-    console.log("remove all");
-    console.log(this);
-  }
-
   render() {
     const optionValues = this.props.options || [];
     return (
@@ -62,7 +71,7 @@ class Options extends React.Component {
         {optionValues.length != 0 && (
           <div>
             <p>Here are your options</p>
-            <button onClick={this.handleRemoveAll}>Remove All</button>
+            <button onClick={this.props.handleDeleteOptions}>Remove All</button>
             <ol>{optionValues.map((e, i) => <Option value={e} key={i} />)}</ol>
           </div>
         )}
