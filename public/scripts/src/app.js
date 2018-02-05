@@ -37,9 +37,7 @@ var IndecisionApp = function (_React$Component) {
     key: "handleDeleteOptions",
     value: function handleDeleteOptions() {
       this.setState(function () {
-        return {
-          options: []
-        };
+        return { options: [] };
       });
     }
   }, {
@@ -55,9 +53,7 @@ var IndecisionApp = function (_React$Component) {
       if (this.state.options.indexOf(option) > -1) return "This option \"" + option + "\" already exists";
 
       this.setState(function (oldState) {
-        return {
-          options: oldState.options.concat(option)
-        };
+        return { options: oldState.options.concat(option) };
       });
     }
   }, {
