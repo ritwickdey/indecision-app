@@ -57,56 +57,45 @@ class IndecisionApp extends React.Component {
   }
 }
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <p>{this.props.subTitle}</p>
-      </div>
-    );
-  }
-}
+const Header = props => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <p>{props.subTitle}</p>
+    </div>
+  );
+};
 
-class Action extends React.Component {
-  render() {
-    return (
-      <div>
-        <button
-          disabled={!this.props.hasOptions}
-          onClick={this.props.handlePick}
-        >
-          What Should I do?
-        </button>
-      </div>
-    );
-  }
-}
+const Action = props => {
+  return (
+    <div>
+      <button disabled={!props.hasOptions} onClick={props.handlePick}>
+        What Should I do?
+      </button>
+    </div>
+  );
+};
 
-class Options extends React.Component {
-  render() {
-    const optionValues = this.props.options || [];
-    return (
-      <div>
-        {optionValues.length == 0 && <p>No options</p>}
-        {optionValues.length != 0 && (
-          <div>
-            <p>Here are your options</p>
-            <button onClick={this.props.handleDeleteOptions}>Remove All</button>
-            <ol>{optionValues.map((e, i) => <Option value={e} key={i} />)}</ol>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+const Options = props => {
+  const optionValues = props.options || [];
+  return (
+    <div>
+      {optionValues.length == 0 && <p>No options</p>}
+      {optionValues.length != 0 && (
+        <div>
+          <p>Here are your options</p>
+          <button onClick={props.handleDeleteOptions}>Remove All</button>
+          <ol>{optionValues.map((e, i) => <Option value={e} key={i} />)}</ol>
+        </div>
+      )}
+    </div>
+  );
+};
 
-class Option extends React.Component {
-  render() {
-    const { value } = this.props;
-    return <li> {value} </li>;
-  }
-}
+const Option = props => {
+  const { value } = props;
+  return <li> {value} </li>;
+};
 
 class AddOption extends React.Component {
   constructor(props) {
@@ -116,6 +105,7 @@ class AddOption extends React.Component {
       error: undefined
     };
   }
+
   handleAddOption(e) {
     e.preventDefault();
 
@@ -131,12 +121,13 @@ class AddOption extends React.Component {
 
     if (!error) e.target.options.value = "";
   }
+
   render() {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.handleAddOption}>
-          <input autocomplete="off" type="text" name="options" />
+          <input autoComplete="off" type="text" name="options" />
           <button>Add Option</button>
         </form>
       </div>
