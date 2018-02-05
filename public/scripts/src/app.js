@@ -10,6 +10,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var STORAGE_KEY = "options-items";
+
 var IndecisionApp = function (_React$Component) {
   _inherits(IndecisionApp, _React$Component);
 
@@ -37,6 +39,20 @@ var IndecisionApp = function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState(function () {
+        return {
+          options: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")
+        };
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(oldProp, oldState) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.options));
+    }
+  }, {
     key: "handleDeleteOptions",
     value: function handleDeleteOptions() {
       this.setState(function () {
@@ -181,11 +197,9 @@ var Option = function Option(props) {
     value,
     React.createElement(
       "button",
-      {
-        onClick: function onClick() {
-          props.handleDeleteOption(value);
-        }
-      },
+      { onClick: function onClick() {
+          return props.handleDeleteOption(value);
+        } },
       "remove"
     )
   );

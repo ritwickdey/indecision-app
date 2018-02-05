@@ -1,3 +1,5 @@
+const STORAGE_KEY = "options-items";
+
 class IndecisionApp extends React.Component {
   static get defaultProps() {
     return { options: [] };
@@ -15,6 +17,16 @@ class IndecisionApp extends React.Component {
     this.handleAddOption = this.handleAddOption.bind(this);
   }
 
+  componentDidMount() {
+    this.setState(() => ({
+      options: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")
+    }));
+  }
+
+  componentDidUpdate(oldProp, oldState) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.options));
+  }
+
   handleDeleteOptions() {
     this.setState(() => ({ options: [] }));
   }
@@ -23,7 +35,7 @@ class IndecisionApp extends React.Component {
     this.setState(oldState => {
       const optionIndex = oldState.options.indexOf(option);
       if (optionIndex < 0) return;
-      const newOptions = [...oldState.options]
+      const newOptions = [...oldState.options];
       newOptions.splice(optionIndex, 1);
       return {
         options: newOptions
@@ -120,13 +132,7 @@ const Option = props => {
   return (
     <li>
       {value}
-      <button
-        onClick={() => {
-          props.handleDeleteOption(value);
-        }}
-      >
-        remove
-      </button>
+      <button onClick={() => props.handleDeleteOption(value)}>remove</button>
     </li>
   );
 };
