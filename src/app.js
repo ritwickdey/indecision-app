@@ -2,7 +2,7 @@ class IndecisionApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: ["one", "two", "three"]
+      options: []
     };
 
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
@@ -24,6 +24,10 @@ class IndecisionApp extends React.Component {
   }
 
   handleAddOption(option) {
+    if (!option) return "Invalid option value";
+    if (this.state.options.indexOf(option) > -1)
+      return `This option "${option}" already exists`;
+
     this.setState(oldState => {
       return {
         options: oldState.options.concat(option)
@@ -116,10 +120,13 @@ class AddOption extends React.Component {
       ? e.target.options.value.trim()
       : null;
 
-    if (option) {
-      this.props.handleAddOption(option);
-      e.target.options.value = "";
+    const error = this.props.handleAddOption(option);
+    if (error) {
+      alert(error);
+      return;
     }
+
+    e.target.options.value = "";
   }
   render() {
     return (

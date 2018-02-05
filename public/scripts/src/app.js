@@ -17,7 +17,7 @@ var IndecisionApp = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
     _this.state = {
-      options: ["one", "two", "three"]
+      options: []
     };
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
@@ -44,6 +44,9 @@ var IndecisionApp = function (_React$Component) {
   }, {
     key: "handleAddOption",
     value: function handleAddOption(option) {
+      if (!option) return "Invalid option value";
+      if (this.state.options.indexOf(option) > -1) return "This option \"" + option + "\" already exists";
+
       this.setState(function (oldState) {
         return {
           options: oldState.options.concat(option)
@@ -234,10 +237,13 @@ var AddOption = function (_React$Component6) {
 
       var option = e.target.options.value ? e.target.options.value.trim() : null;
 
-      if (option) {
-        this.props.handleAddOption(option);
-        e.target.options.value = "";
+      var error = this.props.handleAddOption(option);
+      if (error) {
+        alert(error);
+        return;
       }
+
+      e.target.options.value = "";
     }
   }, {
     key: "render",
