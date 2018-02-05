@@ -112,6 +112,9 @@ class AddOption extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddOption = this.handleAddOption.bind(this);
+    this.state = {
+      error: undefined
+    };
   }
   handleAddOption(e) {
     e.preventDefault();
@@ -121,19 +124,22 @@ class AddOption extends React.Component {
       : null;
 
     const error = this.props.handleAddOption(option);
-    if (error) {
-      alert(error);
-      return;
-    }
 
-    e.target.options.value = "";
+    this.setState(() => {
+      return { error };
+    });
+
+    if (!error) e.target.options.value = "";
   }
   render() {
     return (
-      <form onSubmit={this.handleAddOption}>
-        <input type="text" name="options" />
-        <button>Add Option</button>
-      </form>
+      <div>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleAddOption}>
+          <input autocomplete="off" type="text" name="options" />
+          <button>Add Option</button>
+        </form>
+      </div>
     );
   }
 }

@@ -227,6 +227,9 @@ var AddOption = function (_React$Component6) {
     var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
     _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+    _this6.state = {
+      error: undefined
+    };
     return _this6;
   }
 
@@ -238,24 +241,33 @@ var AddOption = function (_React$Component6) {
       var option = e.target.options.value ? e.target.options.value.trim() : null;
 
       var error = this.props.handleAddOption(option);
-      if (error) {
-        alert(error);
-        return;
-      }
 
-      e.target.options.value = "";
+      this.setState(function () {
+        return { error: error };
+      });
+
+      if (!error) e.target.options.value = "";
     }
   }, {
     key: "render",
     value: function render() {
       return React.createElement(
-        "form",
-        { onSubmit: this.handleAddOption },
-        React.createElement("input", { type: "text", name: "options" }),
-        React.createElement(
-          "button",
+        "div",
+        null,
+        this.state.error && React.createElement(
+          "p",
           null,
-          "Add Option"
+          this.state.error
+        ),
+        React.createElement(
+          "form",
+          { onSubmit: this.handleAddOption },
+          React.createElement("input", { autocomplete: "off", type: "text", name: "options" }),
+          React.createElement(
+            "button",
+            null,
+            "Add Option"
+          )
         )
       );
     }
