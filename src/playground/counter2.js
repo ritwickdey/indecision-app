@@ -1,3 +1,5 @@
+const STORAGE_KEY = "my-counter-storage";
+
 class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -9,15 +11,26 @@ class Counter extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.setState(() => ({
+      count: JSON.parse(localStorage.getItem(STORAGE_KEY) || "0")
+    }));
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.count));
+  }
+
   handleAddOne() {
-    this.setState((oldState) => {
+    this.setState(oldState => {
       return {
         count: oldState.count + 1
       };
     });
   }
+
   handleMinusOne() {
-    this.setState((oldState) => {
+    this.setState(oldState => {
       return {
         count: oldState.count - 1
       };
