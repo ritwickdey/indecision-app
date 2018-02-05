@@ -11,13 +11,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var IndecisionApp = function (_React$Component) {
   _inherits(IndecisionApp, _React$Component);
 
+  _createClass(IndecisionApp, null, [{
+    key: "defaultProps",
+    get: function get() {
+      return { options: [] };
+    }
+  }]);
+
   function IndecisionApp(props) {
     _classCallCheck(this, IndecisionApp);
 
     var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
     _this.state = {
-      options: []
+      options: props.options
     };
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
@@ -57,7 +64,7 @@ var IndecisionApp = function (_React$Component) {
     key: "render",
     value: function render() {
       var app = {
-        title: "Indecision App",
+        title: "Indecision",
         subTitle: "Your Computer's Choice"
       };
       return React.createElement(
@@ -89,12 +96,16 @@ var Header = function Header(props) {
       null,
       props.title
     ),
-    React.createElement(
+    props.subTitle && React.createElement(
       "p",
       null,
       props.subTitle
     )
   );
+};
+
+Header.defaultProps = {
+  title: "Indecision App"
 };
 
 var Action = function Action(props) {
