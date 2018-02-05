@@ -22,6 +22,7 @@ var IndecisionApp = function (_React$Component) {
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
     _this.handlePick = _this.handlePick.bind(_this);
+    _this.handleAddOption = _this.handleAddOption.bind(_this);
     return _this;
   }
 
@@ -39,6 +40,15 @@ var IndecisionApp = function (_React$Component) {
     value: function handlePick() {
       var randomNum = Math.floor(Math.random() * this.state.options.length);
       alert(this.state.options[randomNum]);
+    }
+  }, {
+    key: "handleAddOption",
+    value: function handleAddOption(option) {
+      this.setState(function (oldState) {
+        return {
+          options: oldState.options.concat(option)
+        };
+      });
     }
   }, {
     key: "render",
@@ -59,7 +69,7 @@ var IndecisionApp = function (_React$Component) {
           options: this.state.options,
           handleDeleteOptions: this.handleDeleteOptions
         }),
-        React.createElement(AddOption, null)
+        React.createElement(AddOption, { handleAddOption: this.handleAddOption })
       );
     }
   }]);
@@ -208,19 +218,24 @@ var Option = function (_React$Component5) {
 var AddOption = function (_React$Component6) {
   _inherits(AddOption, _React$Component6);
 
-  function AddOption() {
+  function AddOption(props) {
     _classCallCheck(this, AddOption);
 
-    return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+    var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+    _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+    return _this6;
   }
 
   _createClass(AddOption, [{
     key: "handleAddOption",
     value: function handleAddOption(e) {
       e.preventDefault();
+
       var option = e.target.options.value ? e.target.options.value.trim() : null;
+
       if (option) {
-        console.log(option);
+        this.props.handleAddOption(option);
         e.target.options.value = "";
       }
     }
