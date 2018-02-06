@@ -5,27 +5,28 @@ export const Options = props => {
   const optionValues = props.options || [];
   return (
     <div>
-      {optionValues.length == 0 && <p>No options</p>}
+      <div>
+        <p>Your options</p>
+        <button
+          className="button button--link"
+          disabled={optionValues.length <= 0}
+          onClick={props.handleDeleteOptions}
+        >
+          Remove All
+        </button>
+      </div>
       {optionValues.length != 0 && (
-        <div>
-          <p>Here are your options</p>
-          <button
-            className="button button--link"
-            onClick={props.handleDeleteOptions}
-          >
-            Remove All
-          </button>
-          <ol>
-            {optionValues.map(e => (
-              <Option
-                value={e}
-                key={e}
-                handleDeleteOption={props.handleDeleteOption}
-              />
-            ))}
-          </ol>
-        </div>
+        <ol>
+          {optionValues.map(e => (
+            <Option
+              value={e}
+              key={e}
+              handleDeleteOption={props.handleDeleteOption}
+            />
+          ))}
+        </ol>
       )}
+      {optionValues.length == 0 && <p>Please add few options to get started!</p>}
     </div>
   );
 };
