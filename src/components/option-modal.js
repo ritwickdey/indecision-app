@@ -5,10 +5,16 @@ export const OptionModel = props => (
   <Modal
     isOpen={!!props.selectedOption}
     contentLabel="Option-Model"
+    closeTimeoutMS={200}
     onRequestClose={props.handleClear}
+    className="modal"
   >
-    <h1>Selected Option</h1>
-    {props.selectedOption && <p>{props.selectedOption}</p>}
-    <button onClick={props.handleClear}>Okay</button>
+    <h1 className="modal__title">Selected Option: </h1>
+    {props.selectedOption && (
+      <p className="modal__body">{props.selectedOption}</p>
+    )}
+    <button className="button" onClick={props.handleClear}>
+      Okay
+    </button>
   </Modal>
 );
