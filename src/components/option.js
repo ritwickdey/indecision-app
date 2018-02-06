@@ -1,11 +1,13 @@
 import React from "react";
 
 export const Option = props => {
-  const { value } = props;
+  const { value, index } = props;
 
   return (
-    <li>
-      {value}
+    <li className="option">
+      <p className="option--text">
+        {index}. {value}
+      </p>
       <button
         className="button button--link"
         onClick={() => props.handleDeleteOption(value)}

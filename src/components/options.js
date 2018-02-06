@@ -17,8 +17,9 @@ export const Options = props => {
       </div>
       {optionValues.length != 0 && (
         <ol>
-          {optionValues.map(e => (
+          {optionValues.map((e, i) => (
             <Option
+              index={i+1}
               value={e}
               key={e}
               handleDeleteOption={props.handleDeleteOption}

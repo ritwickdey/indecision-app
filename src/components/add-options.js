@@ -28,6 +28,7 @@ export class AddOption extends React.Component {
             autoComplete="off"
             type="text"
             name="options"
+            placeholder="add your options"
           />
           <button className="button">Add Option</button>
           {this.state.error && <p>{this.state.error}</p>}

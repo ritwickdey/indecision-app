@@ -6,7 +6,9 @@
     background-color: $color2;
     color: $off-white;
     padding: 1rem 1.5rem;
+    font-size: 1.6rem;
     outline: none;
+    border-bottom: $sm-size - 0.3 solid darken($color2, 5%);
 }
 
 .input-text--75 {
