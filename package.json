@@ -4,11 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "babel src/**/*.js --out-dir=public/scripts/ --presets=env,react",
+    "build": "webpack --config=webpack.config.js",
     "build:watch": "npm run build -- --watch"
   },
   "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
     "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.10.0"
   }
 }
