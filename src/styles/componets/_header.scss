@@ -1,0 +1,19 @@
+.header {
+  background: $color1;
+  margin-bottom: 4.8rem;
+  padding: 2rem 0;
+  color: #fff;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 3.2rem;
+  padding: 0.7rem 0;
+  margin-bottom: 0rem;
+}
+
+.header__subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 0rem;
+  color: rgba(255, 255, 255, 0.65);
+}

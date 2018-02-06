@@ -1,0 +1,18 @@
+$color1: #20222b;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Helvetica, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
+}
