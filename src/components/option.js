@@ -6,7 +6,12 @@ export const Option = props => {
   return (
     <li>
       {value}
-      <button onClick={() => props.handleDeleteOption(value)}>remove</button>
+      <button
+        className="button button--link"
+        onClick={() => props.handleDeleteOption(value)}
+      >
+        remove
+      </button>
     </li>
   );
 };

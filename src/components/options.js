@@ -9,7 +9,12 @@ export const Options = props => {
       {optionValues.length != 0 && (
         <div>
           <p>Here are your options</p>
-          <button onClick={props.handleDeleteOptions}>Remove All</button>
+          <button
+            className="button button--link"
+            onClick={props.handleDeleteOptions}
+          >
+            Remove All
+          </button>
           <ol>
             {optionValues.map(e => (
               <Option

@@ -1,0 +1,61 @@
+.button {
+  background-color: $color3;
+  border: none;
+  color: $white;
+  font-size: $m-size;
+  outline: none;
+  border-radius: 0.2rem;
+  padding: 1rem 1.5rem;
+  border-bottom: $sm-size - 0.3 solid darken($color3, 5%);
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+  &:active {
+    transform: translateY($sm-size - 0.3);
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.button--link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: $off-white;
+  &:active {
+    transform: none;
+  }
+}
+
+.big-button {
+  font-weight: bold;
+  font-size: $l-size;
+  width: 100%;
+  padding: $l-size - 0.5;
+  border-radius: 1rem;
+  margin-bottom: $xl-size;
+  transition: 0.3s all ease-in-out;
+  box-shadow: 7px 10px 15px rgba(0, 0, 0, 0.4);
+  border-bottom: $sm-size solid darken($color3, 5%);
+
+  &:hover {
+    transform: translateY(-0.6rem);
+    box-shadow: 7px 13px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0.6rem);
+    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: lighten($color3, 5%);
+    box-shadow: none;
+    border: none;
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
