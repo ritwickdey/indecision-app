@@ -8,18 +8,10 @@ class IndecisionApp extends React.Component {
     return { options: [] };
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      options: props.options
-    };
-
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-  }
-
+  state = {
+    options: this.props.options
+  };
+  
   componentDidMount() {
     this.setState(() => ({
       options: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")
@@ -30,11 +22,11 @@ class IndecisionApp extends React.Component {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.options));
   }
 
-  handleDeleteOptions() {
+  handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   }
 
-  handleDeleteOption(option) {
+  handleDeleteOption = (option) => {
     this.setState(oldState => {
       const optionIndex = oldState.options.indexOf(option);
       if (optionIndex < 0) return;
@@ -46,12 +38,12 @@ class IndecisionApp extends React.Component {
     });
   }
 
-  handlePick() {
+  handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     alert(this.state.options[randomNum]);
   }
 
-  handleAddOption(option) {
+  handleAddOption = (option) => {
     if (!option) return "Invalid option value";
     if (this.state.options.indexOf(option) > -1)
       return `This option "${option}" already exists`;
@@ -141,15 +133,11 @@ const Option = props => {
 };
 
 class AddOption extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleAddOption = this.handleAddOption.bind(this);
-    this.state = {
-      error: undefined
-    };
-  }
+  state = {
+    error: undefined
+  };
 
-  handleAddOption(e) {
+  handleAddOption = e => {
     e.preventDefault();
 
     const option = e.target.options.value
@@ -161,7 +149,7 @@ class AddOption extends React.Component {
     this.setState(() => ({ error }));
 
     if (!error) e.target.options.value = "";
-  }
+  };
 
   render() {
     return (
