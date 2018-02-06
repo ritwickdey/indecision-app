@@ -5,7 +5,7 @@ export const Options = props => {
   const optionValues = props.options || [];
   return (
     <div>
-      <div>
+      <div className="widget-header">
         <p>Your options</p>
         <button
           className="button button--link"
@@ -26,7 +26,9 @@ export const Options = props => {
           ))}
         </ol>
       )}
-      {optionValues.length == 0 && <p>Please add few options to get started!</p>}
+      {optionValues.length == 0 && (
+        <p className="widget-message">Please add few options to get started!</p>
+      )}
     </div>
   );
 };

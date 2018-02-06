@@ -1,0 +1,25 @@
+.widget-header {
+    background-color: $darken-color2;
+    color: $off-white;
+    padding: $m-size;
+    font-weight: bold; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget {
+    text-align: center;
+    background-color: $lighten-color2;
+}
+
+.widget-buttom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: $m-size;
+}
+
+.widget-message {
+    padding: $l-size;
+    border-bottom: 1.5px solid lighten($lighten-color2 , 15%);
+}

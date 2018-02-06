@@ -1,6 +1,8 @@
 $color1: #242731;
 $color2: #3c4358;
 $color3: #7347b6;
+$darken-color2: darken($color2, 5%);
+$lighten-color2: lighten($color2, 5%);
 $white: #ffffff;
 $off-white: #b2b2b2;
 
