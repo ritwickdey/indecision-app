@@ -22,17 +22,17 @@ export class AddOption extends React.Component {
   render() {
     return (
       <div>
-        <form className="widget-buttom" onSubmit={this.handleAddOption}>
+        <form className="add-option" onSubmit={this.handleAddOption}>
           <input
-            className="input-text input-text--75"
+            className="input-text add-option__input"
             autoComplete="off"
             type="text"
             name="options"
             placeholder="add your options"
           />
-          <button className="button">Add Option</button>
-          {this.state.error && <p>{this.state.error}</p>}
+          <button className="button">Add option</button>
         </form>
+        {this.state.error && <p class="add-option-error">{this.state.error}</p>}
       </div>
     );
   }
