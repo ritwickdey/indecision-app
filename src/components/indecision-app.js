@@ -4,6 +4,7 @@ import { AddOption } from "./add-options";
 import { Header } from "./header";
 import { Action } from "./action";
 import { Options } from "./options";
+import { OptionModel } from "./option-modal";
 
 const STORAGE_KEY = "options-items";
 
@@ -13,7 +14,8 @@ export class IndecisionApp extends React.Component {
   }
 
   state = {
-    options: this.props.options
+    options: this.props.options,
+    selectedOption: undefined
   };
 
   componentDidMount() {
@@ -44,8 +46,11 @@ export class IndecisionApp extends React.Component {
 
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
-    alert(this.state.options[randomNum]);
+    this.setState(() => ({ selectedOption: this.state.options[randomNum] }));
+    // alert(this.state.options[randomNum]);
   };
+
+  handleClear = () => this.setState(() => ({ selectedOption: undefined }));
 
   handleAddOption = option => {
     if (!option) return "Invalid option value";
@@ -73,6 +78,10 @@ export class IndecisionApp extends React.Component {
           handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption handleAddOption={this.handleAddOption} />
+        <OptionModel
+          selectedOption={this.state.selectedOption}
+          handleClear={this.handleClear}
+        />
       </div>
     );
   }
