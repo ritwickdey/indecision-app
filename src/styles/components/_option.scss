@@ -1,13 +1,19 @@
 .option {
-    padding: $l-size;
-    display: flex;
-    font-size: 1.6rem;
-    justify-content: space-between;
-    border-bottom: 1.5px solid lighten($lighten-color2 , 5%);
-    word-wrap: break-word;
+  padding: $l-size;
+  display: flex;
+  font-size: 1.6rem;
+  justify-content: space-between;
+  border-bottom: 1.5px solid lighten($lighten-color2, 5%);
+  word-wrap: break-word;
 }
 
 .option--text {
-    color: $white;
-    word-break: break-all;
+  color: $white;
+  word-break: break-all;
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .option {
+    padding: $m-size;
+  }
 }

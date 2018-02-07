@@ -1,16 +1,26 @@
 .add-option-error {
-    font-style: italic;
-    text-align: left;
-    margin-top: -($m-size + .8);
-    padding: $m-size;
+  font-style: italic;
+  text-align: left;
+  margin-top: -($m-size + 0.8);
+  padding: $m-size;
 }
 
 .add-option {
-    display: flex;
-    padding: $m-size;
+  display: flex;
+  padding: $m-size;
 }
 
 .add-option__input {
-    flex-grow: 1;
-    margin-right: $m-size;
+  flex-grow: 1;
+  margin-right: $m-size;
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .add-option {
+    flex-direction: column;
+  }
+  .add-option__input {
+    width: 100%;
+    margin-bottom: $sm-size; 
+  }
 }
