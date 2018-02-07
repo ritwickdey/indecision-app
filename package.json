@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --config=webpack.config.js",
+    "build:prod": "webpack --config=webpack.production.config.js -p",
     "build:watch": "npm run build -- --watch"
   },
   "dependencies": {
