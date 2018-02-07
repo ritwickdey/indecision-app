@@ -32,7 +32,7 @@ export class AddOption extends React.Component {
           />
           <button className="button">Add option</button>
         </form>
-        {this.state.error && <p class="add-option-error">{this.state.error}</p>}
+        {this.state.error && <p className="add-option-error">{this.state.error}</p>}
       </div>
     );
   }
