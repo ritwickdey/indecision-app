@@ -8,4 +8,4 @@ A simple app made with React - this app will make your decision from your choice
 
 * link : https://ritwickdey.github.io/indecision-app/
 
-> This project is part of my [React Course](https://www.udemy.com/react-2nd-edition/) (by Andrew Me
+> This project is part of my [React Course](https://www.udemy.com/react-2nd-edition/) (by Andrew Mead)
